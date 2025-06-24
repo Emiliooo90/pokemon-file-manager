@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 //Componente de navegación entre vistas
 const Navigation = ({ currentView }) => {
     const navItems = [
-        { path: '/files', label: 'Gestión de Archivos', view: 'files' },
-        { path: '/pokemon', label: 'Búsqueda Pokémon', view: 'pokemon' }
+        { path: '/files', label: 'Archivos', view: 'files' },
+        { path: '/pokemon', label: 'PokeAPI', view: 'pokemon' }
     ];
 
     return (
@@ -13,7 +13,7 @@ const Navigation = ({ currentView }) => {
             <div className="container mx-auto px-4">
                 <div className="flex justify-between items-center py-4">
                     <Link to="/" className="text-white text-xl font-bold">
-                        File & Pokémon Manager
+                        F&P Manager
                     </Link>
 
                     <div className="flex space-x-4">
