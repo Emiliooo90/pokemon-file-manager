@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FaPencil } from 'react-icons/fa6';
 
 //Componente modal para editar metadata de archivos
 
@@ -24,7 +25,10 @@ const MetadataEditor = ({ file, onSave, onCancel }) => {
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
-                <h3 className="text-lg font-semibold mb-4">✏️ Editar Metadata</h3>
+                <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <FaPencil className="text-blue-600" />
+                    Editar Metadata
+                </h3>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>

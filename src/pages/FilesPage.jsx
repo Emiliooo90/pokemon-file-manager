@@ -1,3 +1,4 @@
+import { FaFolder, FaTrash } from 'react-icons/fa6';
 import { useFileManager } from '../hooks/useFileManager';
 import Layout from '../components/common/Layout';
 import FileUploader from '../components/files/FileUploader';
@@ -42,7 +43,10 @@ const FilesPage = () => {
                 {/* Header de la página */}
                 <div className="flex justify-between items-center">
                     <div>
-                        <h1 className="text-3xl font-bold text-gray-900">📁 Gestión de Archivos</h1>
+                        <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
+                            <FaFolder className="text-blue-600" />
+                            Gestión de Archivos
+                        </h1>
                         <p className="text-gray-600 mt-1">
                             Carga, visualiza y gestiona la metadata de tus archivos
                         </p>
@@ -51,9 +55,10 @@ const FilesPage = () => {
                     {files.length > 0 && (
                         <button
                             onClick={handleClearAll}
-                            className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                            className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2"
                         >
-                            🗑️ Limpiar Todo
+                            <FaTrash />
+                            Limpiar
                         </button>
                     )}
                 </div>

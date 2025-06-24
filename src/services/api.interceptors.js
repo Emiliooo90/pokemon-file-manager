@@ -23,10 +23,10 @@ const rateLimitMiddleware = (config) => {
         windowStart = now;
     }
     
-    // Check if we're exceeding rate limit
+    // Comprobar si estamos excediendo el límite de solicitudes
     if (requestCount >= MAX_REQUESTS_PER_SECOND) {
         const waitTime = REQUEST_INTERVAL - (now - windowStart);
-        console.warn(`⏳ Rate limit reached. Waiting ${waitTime}ms before next request.`);
+        console.warn(`[WAIT] Rate limit reached. Waiting ${waitTime}ms before next request.`);
         
         return new Promise((resolve) => {
             setTimeout(() => {
@@ -44,11 +44,11 @@ const rateLimitMiddleware = (config) => {
 pokemonAPI.interceptors.request.use(
     async (config) => {
         const rateLimitedConfig = await rateLimitMiddleware(config);
-        console.log('📡 API Request:', rateLimitedConfig.method?.toUpperCase(), rateLimitedConfig.url);
+        console.log('[API] API Request:', rateLimitedConfig.method?.toUpperCase(), rateLimitedConfig.url);
         return rateLimitedConfig;
     },
     (error) => {
-        console.error('❌ Request Error:', error);
+        console.error('[ERROR] Request Error:', error);
         return Promise.reject(error);
     }
 );
@@ -56,7 +56,7 @@ pokemonAPI.interceptors.request.use(
 // Interceptor de response
 pokemonAPI.interceptors.response.use(
     (response) => {
-        console.log('✅ API Response:', response.status, response.config.url);
+        console.log('[SUCCESS] API Response:', response.status, response.config.url);
         return response;
     },
     (error) => {
@@ -64,9 +64,9 @@ pokemonAPI.interceptors.response.use(
         const url = error.config?.url;
         
         if (status === 404) {
-            console.warn(`⚠️ Pokemon not found: ${url}`);
+            console.warn(`[WARNING] Pokemon not found: ${url}`);
         } else {
-            console.error('❌ Response Error:', status, error.message);
+            console.error('[ERROR] Response Error:', status, error.message);
         }
         
         return Promise.reject(error);

@@ -1,3 +1,5 @@
+import { FaChartColumn } from 'react-icons/fa6';
+
 //Componente tabla alternativo para mostrar datos de Pokémon
 const PokemonTable = ({ pokemon }) => {
     if (!pokemon) return null;
@@ -5,7 +7,10 @@ const PokemonTable = ({ pokemon }) => {
     return (
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
             <div className="px-6 py-4 bg-gray-50 border-b">
-                <h3 className="text-lg font-semibold text-gray-800">📊 Detalles del Pokémon</h3>
+                <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                    <FaChartColumn className="text-blue-600" />
+                    Detalles del Pokémon
+                </h3>
             </div>
 
             <div className="overflow-x-auto">

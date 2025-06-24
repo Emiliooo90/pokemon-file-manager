@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FaImage, FaVideo, FaMusic, FaFileLines, FaFileZipper, FaFolder, FaChartColumn, FaPencil, FaTrash } from 'react-icons/fa6';
 import MetadataEditor from './MetadataEditor';
 
 //Componente tabla para mostrar metadata de archivos
@@ -21,19 +22,22 @@ const FileTable = ({ files, onDeleteFile, onUpdateFile }) => {
 
     //Obtiene el icono según el tipo de archivo
     const getFileIcon = (mimeType) => {
-        if (mimeType.startsWith('image/')) return '🖼️';
-        if (mimeType.startsWith('video/')) return '🎥';
-        if (mimeType.startsWith('audio/')) return '🎵';
-        if (mimeType.includes('pdf')) return '📄';
-        if (mimeType.includes('text')) return '📝';
-        if (mimeType.includes('zip') || mimeType.includes('rar')) return '📦';
-        return '📁';
+        if (mimeType.startsWith('image/')) return <FaImage className="text-green-500" />;
+        if (mimeType.startsWith('video/')) return <FaVideo className="text-red-500" />;
+        if (mimeType.startsWith('audio/')) return <FaMusic className="text-purple-500" />;
+        if (mimeType.includes('pdf')) return <FaFileLines className="text-red-600" />;
+        if (mimeType.includes('text')) return <FaFileLines className="text-blue-500" />;
+        if (mimeType.includes('zip') || mimeType.includes('rar')) return <FaFileZipper className="text-orange-500" />;
+        return <FaFolder className="text-yellow-500" />;
     };
 
     if (files.length === 0) {
         return (
             <div className="bg-white p-6 rounded-lg shadow-md">
-                <h2 className="text-2xl font-bold mb-4 text-gray-800">📊 Metadata de Archivos</h2>
+                <h2 className="text-2xl font-bold mb-4 text-gray-800 flex items-center gap-2">
+                    <FaChartColumn className="text-blue-600" />
+                    Metadata de Archivos
+                </h2>
                 <div className="text-center py-8 text-gray-500">
                     <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -48,7 +52,10 @@ const FileTable = ({ files, onDeleteFile, onUpdateFile }) => {
     return (
         <div className="bg-white p-6 rounded-lg shadow-md">
             <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-800">📊 Metadata de Archivos</h2>
+                <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
+                    <FaChartColumn className="text-blue-600" />
+                    Metadata de Archivos
+                </h2>
                 <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
                     {files.length} archivo{files.length !== 1 ? 's' : ''}
                 </span>
@@ -103,15 +110,17 @@ const FileTable = ({ files, onDeleteFile, onUpdateFile }) => {
                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                     <button
                                         onClick={() => setEditingFile(file)}
-                                        className="text-blue-600 hover:text-blue-900 mr-4"
+                                        className="text-blue-600 hover:text-blue-900 mr-4 flex items-center gap-1"
                                     >
-                                        ✏️ Editar
+                                        <FaPencil />
+                                        Editar
                                     </button>
                                     <button
                                         onClick={() => onDeleteFile(file.id)}
-                                        className="text-red-600 hover:text-red-900"
+                                        className="text-red-600 hover:text-red-900 flex items-center gap-1"
                                     >
-                                        🗑️ Eliminar
+                                        <FaTrash />
+                                        Eliminar
                                     </button>
                                 </td>
                             </tr>

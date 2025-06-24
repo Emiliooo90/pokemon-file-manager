@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { FaPaw, FaCreditCard, FaChartColumn, FaMagnifyingGlass, FaLightbulb, FaChartLine } from 'react-icons/fa6';
 import { usePokemonAPI } from '../hooks/usePokemonAPI';
 import Layout from '../components/common/Layout';
 import PokemonSearch from '../components/pokemon/PokemonSearch';
@@ -80,7 +81,10 @@ const PokemonPage = () => {
                 {/* Header de la página */}
                 <div className="flex justify-between items-center">
                     <div>
-                        <h1 className="text-3xl font-bold text-gray-900">🐾 Búsqueda de Pokémon</h1>
+                        <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
+                            <FaPaw className="text-yellow-500" />
+                            Búsqueda de Pokémon
+                        </h1>
                         <p className="text-gray-600 mt-1">
                             Encuentra y explora información detallada de Pokémon
                         </p>
@@ -91,21 +95,23 @@ const PokemonPage = () => {
                         <div className="flex bg-gray-100 rounded-lg p-1">
                             <button
                                 onClick={() => setViewMode('card')}
-                                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${viewMode === 'card'
+                                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-2 ${viewMode === 'card'
                                         ? 'bg-white text-blue-600 shadow-sm'
                                         : 'text-gray-600 hover:text-gray-900'
                                     }`}
                             >
-                                🃏 Tarjeta
+                                <FaCreditCard />
+                                Tarjeta
                             </button>
                             <button
                                 onClick={() => setViewMode('table')}
-                                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${viewMode === 'table'
+                                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-2 ${viewMode === 'table'
                                         ? 'bg-white text-blue-600 shadow-sm'
                                         : 'text-gray-600 hover:text-gray-900'
                                     }`}
                             >
-                                📊 Tabla
+                                <FaChartColumn />
+                                Tabla
                             </button>
                         </div>
                     )}
@@ -149,7 +155,10 @@ const PokemonPage = () => {
                         <div className="space-y-6">
                             {/* Tips de búsqueda */}
                             <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                                <h3 className="font-semibold text-yellow-800 mb-2">💡 Tips de Búsqueda</h3>
+                                <h3 className="font-semibold text-yellow-800 mb-2 flex items-center gap-2">
+                                    <FaLightbulb className="text-yellow-600" />
+                                    Tips de Búsqueda
+                                </h3>
                                 <ul className="text-sm text-yellow-700 space-y-1">
                                     <li>• Puedes buscar por nombre en inglés (ej: "pikachu")</li>
                                     <li>• Las sugerencias aparecen mientras escribes</li>
@@ -160,7 +169,10 @@ const PokemonPage = () => {
                             {/* Datos curiosos */}
                             {selectedPokemon && (
                                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                                    <h3 className="font-semibold text-blue-800 mb-2">📈 Datos Curiosos</h3>
+                                    <h3 className="font-semibold text-blue-800 mb-2 flex items-center gap-2">
+                                        <FaChartLine className="text-blue-600" />
+                                        Datos Curiosos
+                                    </h3>
                                     <div className="text-sm text-blue-700 space-y-2">
                                         <p>
                                             <strong>Estadística más alta:</strong>{' '}
@@ -188,7 +200,9 @@ const PokemonPage = () => {
                 {/* Estado inicial */}
                 {!selectedPokemon && !loading && !error && (
                     <div className="text-center py-12">
-                        <div className="text-6xl mb-4">🔍</div>
+                        <div className="text-6xl mb-4">
+                            <FaMagnifyingGlass className="text-6xl text-gray-400 mx-auto" />
+                        </div>
                         <h3 className="text-xl font-semibold text-gray-700 mb-2">
                             ¡Busca tu Pokémon favorito!
                         </h3>

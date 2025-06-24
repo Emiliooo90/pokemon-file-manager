@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FaFolder } from 'react-icons/fa6';
 
 //Componente para cargar archivos (uno individual y múltiples)
 
@@ -50,7 +51,10 @@ const FileUploader = ({ onFilesUploaded }) => {
 
     return (
         <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold mb-6 text-gray-800">📁 Carga de Archivos</h2>
+            <h2 className="text-2xl font-bold mb-6 text-gray-800 flex items-center gap-2">
+                <FaFolder className="text-blue-600" />
+                Carga de Archivos
+            </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Carga de archivo individual */}

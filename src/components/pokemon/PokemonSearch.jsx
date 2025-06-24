@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { FaMagnifyingGlass, FaXmark, FaLightbulb } from 'react-icons/fa6';
 
 
 //Componente de búsqueda con autosugerencias
@@ -40,7 +41,10 @@ const PokemonSearch = ({ onSearch, suggestions, loading, onClear }) => {
 
     return (
         <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold mb-6 text-gray-800">🔍 Búsqueda de Pokémon</h2>
+            <h2 className="text-2xl font-bold mb-6 text-gray-800 flex items-center gap-2">
+                <FaMagnifyingGlass className="text-blue-600" />
+                Búsqueda de Pokémon
+            </h2>
 
             <div className="relative">
                 <div className="flex">
@@ -54,10 +58,10 @@ const PokemonSearch = ({ onSearch, suggestions, loading, onClear }) => {
                     {query && (
                         <button
                             onClick={handleClear}
-                            className="px-4 py-3 bg-gray-200 border border-l-0 border-gray-300 hover:bg-gray-300 transition-colors"
+                            className="px-4 py-3 bg-gray-200 border border-l-0 border-gray-300 hover:bg-gray-300 transition-colors flex items-center"
                             title="Limpiar búsqueda"
                         >
-                            ❌
+                            <FaXmark />
                         </button>
                     )}
                     <button
@@ -74,7 +78,10 @@ const PokemonSearch = ({ onSearch, suggestions, loading, onClear }) => {
                                 Buscando...
                             </span>
                         ) : (
-                            '🔍 Buscar'
+                            <span className="flex items-center gap-2">
+                                <FaMagnifyingGlass />
+                                Buscar
+                            </span>
                         )}
                     </button>
                 </div>
@@ -96,8 +103,9 @@ const PokemonSearch = ({ onSearch, suggestions, loading, onClear }) => {
             </div>
 
             {/* Ayuda */}
-            <div className="mt-4 text-sm text-gray-600">
-                💡 <strong>Tip:</strong> Escribe al menos 2 caracteres para ver sugerencias
+            <div className="mt-4 text-sm text-gray-600 flex items-center gap-2">
+                <FaLightbulb className="text-yellow-500" />
+                <strong>Tip:</strong> Escribe al menos 2 caracteres para ver sugerencias
             </div>
         </div>
     );
